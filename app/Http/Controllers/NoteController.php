@@ -74,7 +74,18 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validate the request data
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        $note = Note::findOrFail($id);
+        $note->title = $request->input('title');
+        $note->content = $request->input('content');
+        $note->save();
+
+        return redirect()->route('notes.index')->with('success', 'Note updated successfully!');
     }
 
     /**
