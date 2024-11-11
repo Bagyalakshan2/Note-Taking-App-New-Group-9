@@ -64,7 +64,8 @@ class NoteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $note = Note::findOrFail($id);
+        return view('notes.edit', compact('note'));
     }
 
     /**
