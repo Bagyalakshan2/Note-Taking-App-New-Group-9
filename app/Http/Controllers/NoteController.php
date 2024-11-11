@@ -13,11 +13,8 @@ class NoteController extends Controller
      */
     public function index()
     {
-        // Find the note by its ID
-        $note = Note::findOrFail($id);
-
-        // Return the view with the note
-        return view('notes.show', compact('note'));
+        $notes = Note::all();  // Retrieve all notes from the database
+        return view('notes.index', compact('notes'));  // Pass notes to the view
     }
 
     /**
