@@ -13,7 +13,11 @@ class NoteController extends Controller
      */
     public function index()
     {
-        //
+        // Find the note by its ID
+        $note = Note::findOrFail($id);
+
+        // Return the view with the note
+        return view('notes.show', compact('note'));
     }
 
     /**
