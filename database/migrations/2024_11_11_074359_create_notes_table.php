@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        $table->id();
+        $table->string('title');  // Title of the note
+        $table->text('content');   // Content of the note
+        $table->timestamps();      // Created at and Updated at timestamps
+    });
     }
 
     /**
